@@ -473,25 +473,25 @@
   }
 
   .agent-card-top {
-    height: 140px;
+    height: 200px;
     background: var(--deep);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     border-top: 2px solid transparent;
     transition: border-color 0.3s;
+    overflow: hidden;
   }
 
-  .agent-avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: rgba(0,71,255,0.12);
-    border: 2px solid rgba(0,71,255,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .agent-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .agent-card:hover .agent-card-photo {
+    transform: scale(1.04);
   }
 
   .agent-status {
@@ -924,25 +924,34 @@
   }
 
   .agent-full-top {
-    height: 100px;
+    height: 260px;
     background: var(--deep);
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    gap: 20px;
+    position: relative;
     border-top: 2px solid var(--blue);
+    overflow: hidden;
   }
 
-  .agent-full-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(0,71,255,0.12);
-    border: 2px solid rgba(0,71,255,0.3);
+  .agent-full-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .agent-full-card:hover .agent-full-photo {
+    transform: scale(1.03);
+  }
+
+  .agent-full-top-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 24px 16px;
+    background: linear-gradient(to top, rgba(6,6,10,0.97) 0%, rgba(6,6,10,0.5) 60%, transparent 100%);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    align-items: flex-end;
+    justify-content: space-between;
   }
 
   .agent-full-info .agent-dept { font-size: 0.7rem; }
@@ -1494,10 +1503,9 @@
 <!-- NAVIGATION -->
 <nav id="navbar">
   <a class="nav-logo" onclick="showPage('home')">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#0047FF" fill-opacity="0.12"/>
-      <path d="M10 8h8a6 6 0 0 1 0 12h-5v6h-3V8z" fill="#0047FF"/>
-      <path d="M13 11v6h5a3 3 0 0 0 0-6h-5z" fill="#00B4FF"/>
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px;">
+      <path fill-rule="evenodd" fill="#0047FF" d="M4,4 H34 V26 H14 V36 H4 Z M22,14 A6,6 0 1,0 34,14 A6,6 0 1,0 22,14 Z M0,23 L4,29 L36,7 L32,1 Z"/>
+      <rect x="36" y="4" width="4" height="4" fill="#0047FF"/>
     </svg>
     <span class="nav-wordmark"><span>P</span>roxura</span>
   </a>
@@ -1597,12 +1605,7 @@
       <!-- FELIX -->
       <div class="agent-card fade-in fade-in-delay-1">
         <div class="agent-card-top">
-          <div class="agent-avatar">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#0047FF" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#0047FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="felix.jpg" alt="Felix" class="agent-card-photo">
           <div class="agent-status"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-card-body">
@@ -1621,12 +1624,7 @@
       <!-- NOVA -->
       <div class="agent-card fade-in fade-in-delay-2">
         <div class="agent-card-top">
-          <div class="agent-avatar">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#00B4FF" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#00B4FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="nova.jpg" alt="Nova" class="agent-card-photo">
           <div class="agent-status"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-card-body">
@@ -1645,12 +1643,7 @@
       <!-- MAYA -->
       <div class="agent-card fade-in fade-in-delay-3">
         <div class="agent-card-top">
-          <div class="agent-avatar">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#7B3FF5" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#7B3FF5" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="maya.jpg" alt="Maya" class="agent-card-photo">
           <div class="agent-status"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-card-body">
@@ -1669,12 +1662,7 @@
       <!-- AXEL -->
       <div class="agent-card fade-in fade-in-delay-4">
         <div class="agent-card-top">
-          <div class="agent-avatar">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#00C864" fill-opacity="0.4"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#00C864" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="axel.jpg" alt="Axel" class="agent-card-photo">
           <div class="agent-status"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-card-body">
@@ -1815,10 +1803,9 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="nav-logo" onclick="showPage('home')" style="display:inline-flex;">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
-            <rect width="32" height="32" rx="8" fill="#0047FF" fill-opacity="0.12"/>
-            <path d="M10 8h8a6 6 0 0 1 0 12h-5v6h-3V8z" fill="#0047FF"/>
-            <path d="M13 11v6h5a3 3 0 0 0 0-6h-5z" fill="#00B4FF"/>
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+            <path fill-rule="evenodd" fill="#0047FF" d="M4,4 H34 V26 H14 V36 H4 Z M22,14 A6,6 0 1,0 34,14 A6,6 0 1,0 22,14 Z M0,23 L4,29 L36,7 L32,1 Z"/>
+            <rect x="36" y="4" width="4" height="4" fill="#0047FF"/>
           </svg>
           <span class="nav-wordmark" style="font-size:1.1rem;"><span>P</span>roxura</span>
         </a>
@@ -1869,18 +1856,15 @@
       <!-- FELIX FULL -->
       <div class="agent-full-card fade-in fade-in-delay-1">
         <div class="agent-full-top">
-          <div class="agent-full-avatar">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#0047FF" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#0047FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <img src="felix.jpg" alt="Felix" class="agent-full-photo">
+          <div class="agent-full-top-overlay">
+            <div class="agent-full-info">
+              <div class="agent-dept">Finance Agent</div>
+              <div class="agent-name">Felix</div>
+              <div class="agent-title">CFO Intelligence</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Online</div>
           </div>
-          <div class="agent-full-info">
-            <div class="agent-dept">Finance Agent</div>
-            <div class="agent-name">Felix</div>
-            <div class="agent-title">CFO Intelligence</div>
-          </div>
-          <div class="agent-status" style="margin-left:auto;"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-full-body">
           <p class="agent-full-desc">Felix is jouw digitale CFO. Hij verwerkt facturen, bewaakt de cashflow en genereert financiële rapportages — volledig geautomatiseerd en gekoppeld aan jouw bestaande boekhoudsysteem.</p>
@@ -1906,18 +1890,15 @@
       <!-- NOVA FULL -->
       <div class="agent-full-card fade-in fade-in-delay-2">
         <div class="agent-full-top" style="border-top-color:#00B4FF;">
-          <div class="agent-full-avatar" style="background:rgba(0,180,255,0.1);border-color:rgba(0,180,255,0.3);">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#00B4FF" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#00B4FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <img src="nova.jpg" alt="Nova" class="agent-full-photo">
+          <div class="agent-full-top-overlay">
+            <div class="agent-full-info">
+              <div class="agent-dept" style="color:#00B4FF;">Hospitality Agent</div>
+              <div class="agent-name">Nova</div>
+              <div class="agent-title">Guest Experience</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Online</div>
           </div>
-          <div class="agent-full-info">
-            <div class="agent-dept" style="color:#00B4FF;">Hospitality Agent</div>
-            <div class="agent-name">Nova</div>
-            <div class="agent-title">Guest Experience</div>
-          </div>
-          <div class="agent-status" style="margin-left:auto;"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-full-body">
           <p class="agent-full-desc">Nova beheert de complete gastervaring — van reservering tot vertrek. Ze verwerkt reviews, optimaliseert bezettingsgraden en rapporteert over gast-NPS in real-time.</p>
@@ -1943,18 +1924,15 @@
       <!-- MAYA FULL -->
       <div class="agent-full-card fade-in fade-in-delay-3">
         <div class="agent-full-top" style="border-top-color:#7B3FF5;">
-          <div class="agent-full-avatar" style="background:rgba(123,63,245,0.1);border-color:rgba(123,63,245,0.3);">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#7B3FF5" fill-opacity="0.5"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#7B3FF5" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <img src="maya.jpg" alt="Maya" class="agent-full-photo">
+          <div class="agent-full-top-overlay">
+            <div class="agent-full-info">
+              <div class="agent-dept" style="color:#7B3FF5;">Marketing Agent</div>
+              <div class="agent-name">Maya</div>
+              <div class="agent-title">Creative Intelligence</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Online</div>
           </div>
-          <div class="agent-full-info">
-            <div class="agent-dept" style="color:#7B3FF5;">Marketing Agent</div>
-            <div class="agent-name">Maya</div>
-            <div class="agent-title">Creative Intelligence</div>
-          </div>
-          <div class="agent-status" style="margin-left:auto;"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-full-body">
           <p class="agent-full-desc">Maya neemt jouw marketingoperatie over. Ze schrijft social content, bouwt e-mail sequences en analyseert doelgroepen — zo werk jij altijd met data-gedreven marketing.</p>
@@ -1980,18 +1958,15 @@
       <!-- AXEL FULL -->
       <div class="agent-full-card fade-in fade-in-delay-4">
         <div class="agent-full-top" style="border-top-color:#00C864;">
-          <div class="agent-full-avatar" style="background:rgba(0,200,100,0.1);border-color:rgba(0,200,100,0.3);">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="14" r="7" fill="#00C864" fill-opacity="0.4"/>
-              <path d="M6 30c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#00C864" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <img src="axel.jpg" alt="Axel" class="agent-full-photo">
+          <div class="agent-full-top-overlay">
+            <div class="agent-full-info">
+              <div class="agent-dept" style="color:#00C864;">Operations Agent</div>
+              <div class="agent-name">Axel</div>
+              <div class="agent-title">Process Intelligence</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Online</div>
           </div>
-          <div class="agent-full-info">
-            <div class="agent-dept" style="color:#00C864;">Operations Agent</div>
-            <div class="agent-name">Axel</div>
-            <div class="agent-title">Process Intelligence</div>
-          </div>
-          <div class="agent-status" style="margin-left:auto;"><span class="status-dot"></span>Online</div>
         </div>
         <div class="agent-full-body">
           <p class="agent-full-desc">Axel is de operationele ruggengraat van jouw bedrijf. Hij stroomlijnt workflows, monitort KPI's en koppelt systemen zodat jij altijd één helder beeld hebt van je operatie.</p>
@@ -2065,10 +2040,9 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="nav-logo" onclick="showPage('home')" style="display:inline-flex;">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
-            <rect width="32" height="32" rx="8" fill="#0047FF" fill-opacity="0.12"/>
-            <path d="M10 8h8a6 6 0 0 1 0 12h-5v6h-3V8z" fill="#0047FF"/>
-            <path d="M13 11v6h5a3 3 0 0 0 0-6h-5z" fill="#00B4FF"/>
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+            <path fill-rule="evenodd" fill="#0047FF" d="M4,4 H34 V26 H14 V36 H4 Z M22,14 A6,6 0 1,0 34,14 A6,6 0 1,0 22,14 Z M0,23 L4,29 L36,7 L32,1 Z"/>
+            <rect x="36" y="4" width="4" height="4" fill="#0047FF"/>
           </svg>
           <span class="nav-wordmark" style="font-size:1.1rem;"><span>P</span>roxura</span>
         </a>
@@ -2221,10 +2195,9 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="nav-logo" onclick="showPage('home')" style="display:inline-flex;">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
-            <rect width="32" height="32" rx="8" fill="#0047FF" fill-opacity="0.12"/>
-            <path d="M10 8h8a6 6 0 0 1 0 12h-5v6h-3V8z" fill="#0047FF"/>
-            <path d="M13 11v6h5a3 3 0 0 0 0-6h-5z" fill="#00B4FF"/>
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+            <path fill-rule="evenodd" fill="#0047FF" d="M4,4 H34 V26 H14 V36 H4 Z M22,14 A6,6 0 1,0 34,14 A6,6 0 1,0 22,14 Z M0,23 L4,29 L36,7 L32,1 Z"/>
+            <rect x="36" y="4" width="4" height="4" fill="#0047FF"/>
           </svg>
           <span class="nav-wordmark" style="font-size:1.1rem;"><span>P</span>roxura</span>
         </a>
@@ -2352,10 +2325,9 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="nav-logo" onclick="showPage('home')" style="display:inline-flex;">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
-            <rect width="32" height="32" rx="8" fill="#0047FF" fill-opacity="0.12"/>
-            <path d="M10 8h8a6 6 0 0 1 0 12h-5v6h-3V8z" fill="#0047FF"/>
-            <path d="M13 11v6h5a3 3 0 0 0 0-6h-5z" fill="#00B4FF"/>
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+            <path fill-rule="evenodd" fill="#0047FF" d="M4,4 H34 V26 H14 V36 H4 Z M22,14 A6,6 0 1,0 34,14 A6,6 0 1,0 22,14 Z M0,23 L4,29 L36,7 L32,1 Z"/>
+            <rect x="36" y="4" width="4" height="4" fill="#0047FF"/>
           </svg>
           <span class="nav-wordmark" style="font-size:1.1rem;"><span>P</span>roxura</span>
         </a>
